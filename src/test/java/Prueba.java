@@ -1,5 +1,7 @@
 import automationFramework.Driver;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -7,6 +9,7 @@ import pageObjects.GooglePage;
 import pageObjects.OlePage;
 import pageObjects.ResultsPage;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -33,7 +36,7 @@ public class Prueba {
     }
 
     @Test(dependsOnMethods = {"verifyFirstResult"})
-    public void goFirstResultPage(){
+    public void verifyOleMenu(){
         olePage = resultsPage.clickOlePage();
         List<String> menuElements = olePage.getListOfHeaderMenuOptions();
         Assert.assertTrue(menuElements.contains("PRIMERA"), " La opcion Primera, no aparece en el menu");
@@ -50,9 +53,15 @@ public class Prueba {
         Assert.assertEquals(menuElements.size(), 11);
     }
 
+    @AfterMethod
+    public void takeScreenshotFailedTest(ITestResult iTestResult) throws IOException {
+        if (!iTestResult.isSuccess()) {
+            driver.takeScreenshot(iTestResult.getTestName());
+        }
+    }
+
     @AfterTest
     public void closeBrowser(){
         driver.closeBrowser();
     }
-
 }

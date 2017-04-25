@@ -1,12 +1,10 @@
-package pageObjects;
+package com.selenium.pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by German on 21/4/2017.
@@ -36,13 +34,11 @@ public class ResultsPage {
     }
 
     public String getTextOfFirstResult(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return firstResult.getText();
     }
 
     public OlePage clickOlePage(){
         firstResult.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return new OlePage(driver);
     }
 

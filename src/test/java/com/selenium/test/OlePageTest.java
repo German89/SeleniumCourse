@@ -1,31 +1,29 @@
-import automationFramework.Driver;
-import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import pageObjects.GooglePage;
-import pageObjects.OlePage;
-import pageObjects.ResultsPage;
+package com.selenium.test;
 
-import java.io.IOException;
+import com.selenium.automationFramework.AutomationFramework;
+import com.selenium.automationFramework.ResultListener;
+import org.testng.Assert;
+import org.testng.annotations.*;
+import com.selenium.pageObjects.GooglePage;
+import com.selenium.pageObjects.OlePage;
+import com.selenium.pageObjects.ResultsPage;
 import java.util.List;
 
 /**
  * Created by German on 19/4/2017.
  */
 
-public class Prueba {
+public class OlePageTest extends AutomationFramework {
     private GooglePage googlePage;
-    private Driver driver;
     private ResultsPage resultsPage;
     private OlePage olePage;
+    private ResultListener resultListener = new ResultListener();
 
     @BeforeTest
-    public void setUp() throws InterruptedException {
-        driver = new Driver();
-        googlePage = driver.setUp("Chrome");
+    @Parameters({"browser"})
+    public void setUpTest(@Optional("Chrome") String browser) throws InterruptedException {
+        resultListener.getDriver(driver);
+        googlePage = super.setUp(browser);
     }
 
     @Test
@@ -53,15 +51,8 @@ public class Prueba {
         Assert.assertEquals(menuElements.size(), 11);
     }
 
-    @AfterMethod
-    public void takeScreenshotFailedTest(ITestResult iTestResult) throws IOException {
-        if (!iTestResult.isSuccess()) {
-            driver.takeScreenshot(iTestResult.getTestName());
-        }
-    }
-
     @AfterTest
     public void closeBrowser(){
-        driver.closeBrowser();
+        super.closeBrowser();
     }
 }

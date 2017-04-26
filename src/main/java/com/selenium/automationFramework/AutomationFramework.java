@@ -31,6 +31,22 @@ public class AutomationFramework {
         return new GooglePage(driver);
     }
 
+    public  GooglePage setUpSelenide(String browser) throws InterruptedException {
+        if (browser.equals("Chrome")) {
+            System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+            driver = new ChromeDriver();
+
+        } else if (browser.equals("Firefox")) {
+            System.setProperty("webdriver.gecko.driver","C:\\drivers\\geckodriver.exe");
+            driver = new FirefoxDriver();
+        }
+
+        driver.manage().window().maximize();
+        driver.get("https://www.google.com.ar");
+        WaitHelper.setImplicitWait(driver, 10);
+        return new GooglePage(driver);
+    }
+
     public void closeBrowser(){
         driver.quit();
     }

@@ -24,5 +24,4 @@ public class GooglePage {
         driver.findElement(searchButton).click();
         return new ResultsPage(driver);
     }
-    
 }

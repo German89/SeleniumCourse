@@ -21,7 +21,7 @@ public class OlePageTest extends AutomationFramework {
 
     @BeforeTest
     @Parameters({"browser"})
-    public void setUpTest(@Optional("Chrome") String browser) throws InterruptedException {
+    public void setUpTest(@Optional("Firefox") String browser) throws InterruptedException {
         resultListener.getDriver(driver);
         googlePage = super.setUp(browser);
     }

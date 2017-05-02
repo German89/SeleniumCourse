@@ -1,19 +1,22 @@
 package com.selenium.test;
 
 import com.selenium.automationFramework.AutomationFramework;
+import com.selenium.automationFramework.AutomationRemoteFramework;
 import com.selenium.automationFramework.ResultListener;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import com.selenium.pageObjects.GooglePage;
 import com.selenium.pageObjects.OlePage;
 import com.selenium.pageObjects.ResultsPage;
+
+import java.net.MalformedURLException;
 import java.util.List;
 
 /**
  * Created by German on 19/4/2017.
  */
 
-public class OlePageTest extends AutomationFramework {
+public class OlePageTest extends AutomationRemoteFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
     private OlePage olePage;
@@ -21,7 +24,7 @@ public class OlePageTest extends AutomationFramework {
 
     @BeforeTest
     @Parameters({"browser"})
-    public void setUpTest(@Optional("Firefox") String browser) throws InterruptedException {
+    public void setUpTest(@Optional("Chrome") String browser) throws InterruptedException, MalformedURLException {
         resultListener.getDriver(driver);
         googlePage = super.setUp(browser);
     }

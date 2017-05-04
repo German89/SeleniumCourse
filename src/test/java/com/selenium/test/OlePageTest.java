@@ -16,7 +16,7 @@ import java.util.List;
  * Created by German on 19/4/2017.
  */
 
-public class OlePageTest extends AutomationRemoteFramework {
+public class OlePageTest extends AutomationFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
     private OlePage olePage;

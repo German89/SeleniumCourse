@@ -8,12 +8,4 @@
             <class name="com.selenium.test.OlePageTest"/>
         </classes>
     </test>
-
-    <test name="Test pages from Goolge Firefox" parallel="tests" thread-count="2">
-        <parameter name="browser" value="Firefox"/>
-        <classes>
-            <class name="com.selenium.test.FacebookPageTest"/>
-            <class name="com.selenium.test.OlePageTest"/>
-        </classes>
-    </test>
 </suite>

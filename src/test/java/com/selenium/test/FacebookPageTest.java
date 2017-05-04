@@ -14,7 +14,6 @@ import com.selenium.pageObjects.ResultsPage;
 public class FacebookPageTest extends AutomationFramework{
     private GooglePage googlePage;
     private ResultsPage resultsPage;
-    private OlePage olePage;
     private ResultListener resultListener = new ResultListener();
 
     @BeforeTest

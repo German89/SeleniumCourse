@@ -15,9 +15,9 @@ public class BitBarTest extends AutomationAndroidFramework {
 
     @BeforeClass
     public void setUp() throws MalformedURLException, InterruptedException {
-        super.setUpNativeAPP();
+        super.setUpHybridApp();
 
-}
+    }
     @Test
     public void appiumBitBarTest() {
         //Click second radio button

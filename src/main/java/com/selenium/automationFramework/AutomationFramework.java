@@ -1,5 +1,6 @@
 package com.selenium.automationFramework;
 
+import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -41,6 +42,7 @@ public class AutomationFramework {
             driver = new FirefoxDriver();
         }
 
+        WebDriverRunner.setWebDriver(driver);//Selenide is going to use the selenium webdriver
         driver.manage().window().maximize();
         driver.get("https://www.google.com.ar");
         WaitHelper.setImplicitWait(driver, 10);

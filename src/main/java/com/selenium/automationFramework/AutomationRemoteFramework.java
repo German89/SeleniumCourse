@@ -24,7 +24,7 @@ public class AutomationRemoteFramework {
 
         } else if (browser.equals("Firefox")) {
             System.setProperty("webdriver.gecko.driver","C:\\drivers\\geckodriver.exe");
-            DesiredCapabilities capability = DesiredCapabilities.firefox();
+            DesiredCapabilities capability = DesiredCapabilities.chrome();
             driver = new RemoteWebDriver(new URL("http://localhost:4444/wb/hub"), capability);
         }
 

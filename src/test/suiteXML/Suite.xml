@@ -5,6 +5,7 @@
         <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="com.selenium.test.OlePageTest"/>
+            <class name="com.selenium.test.FacebookPageTest"/>
         </classes>
     </test>
 </suite>

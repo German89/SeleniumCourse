@@ -26,6 +26,7 @@ public class OlePageTest extends AutomationFramework {
     @Parameters({"browser"})
     public void setUpTest(@Optional("Chrome") String browser) throws InterruptedException, MalformedURLException {
         googlePage = super.setUp(browser);
+        resultListener.getDriver(driver);
     }
 
     @Test

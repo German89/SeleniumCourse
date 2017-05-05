@@ -28,7 +28,7 @@ public class AutomationFramework {
 
         driver.manage().window().maximize();
         driver.get("https://www.google.com.ar");
-        WaitHelper.setImplicitWait(driver, 10);
+        WaitHelper.setImplicitWait(driver, 20);
         return new GooglePage(driver);
     }
 

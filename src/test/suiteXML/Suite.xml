@@ -4,7 +4,6 @@
     <test name="Test pages from Goolge chrome" parallel="tests" thread-count="2">
         <parameter name="browser" value="Chrome"/>
         <classes>
-            <class name="com.selenium.test.FacebookPageTest"/>
             <class name="com.selenium.test.OlePageTest"/>
         </classes>
     </test>

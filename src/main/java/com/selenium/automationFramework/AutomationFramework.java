@@ -14,7 +14,7 @@ import com.selenium.pageObjects.GooglePage;
  */
 @Listeners({ResultListener.class})
 public class AutomationFramework {
-    protected WebDriver driver;
+    public static WebDriver driver;
 
     public  GooglePage setUp(String browser) throws InterruptedException {
         if (browser.equals("Chrome")) {
@@ -48,6 +48,7 @@ public class AutomationFramework {
         WaitHelper.setImplicitWait(driver, 10);
         return new GooglePage(driver);
     }
+
 
     public void closeBrowser(){
         driver.quit();

@@ -1,5 +1,6 @@
 package com.selenium.automationFramework;
 
+import com.codeborne.selenide.WebDriverRunner;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -14,16 +15,14 @@ import java.io.IOException;
  * Created by German on 24/4/2017.
  */
 public class ResultListener extends TestListenerAdapter{
-    private WebDriver driver;
+    private static WebDriver driver;
 
     public void getDriver(WebDriver driver){
         this.driver  = driver;
     }
 
-
     @Override
     public void onTestSuccess(ITestResult result){
-
     }
 
     @Override

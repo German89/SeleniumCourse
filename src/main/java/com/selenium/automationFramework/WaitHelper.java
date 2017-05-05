@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class WaitHelper {
 
     public static void waitForPresence(WebDriver driver, By locator, int timeout){
-        (new WebDriverWait(driver, 15)).until(ExpectedConditions.presenceOfElementLocated(locator));
+        (new WebDriverWait(driver, timeout)).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public static void setImplicitWait(WebDriver driver, int seconds){

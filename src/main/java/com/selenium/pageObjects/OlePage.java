@@ -26,6 +26,7 @@ public class OlePage {
 
     public OlePage(WebDriver driver) {
         this.driver = driver;
+        WaitHelper.waitForPresence(driver, headerMenuLocator, 20);
         PageFactory.initElements(driver, this);
     }
 

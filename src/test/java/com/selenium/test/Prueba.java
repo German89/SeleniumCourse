@@ -2,6 +2,7 @@ package com.selenium.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -12,10 +13,20 @@ public class Prueba {
 
     @Test
     public void testGoogle(){
+        //Le indicamos a Selenium que vamos a ejecutar nuestros test en Chrome
         System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
+
+        //Navegamos a la pagina de Google
         driver.get("http://www.google.com.ar");
-        driver.findElement(By.id("lst-ib")).sendKeys("Ole");
-        driver.findElement( By.cssSelector("[aria-label='Buscar con Google']")).click();
+
+        // Localizamos por ID el elemento input y lo guardamos en un Objeto del tipo WebElement
+        WebElement inputBusqueda = driver.findElement(By.id("lst-ib"));
+
+        //Escribimos el texto Ole en el input
+        inputBusqueda.sendKeys("Ole");
+
+        //Localizamos el boton de buscar usando un selector css y le hacemos click
+        driver.findElement(By.cssSelector("[aria-label='Buscar con Google']")).click();
     }
 }

@@ -14,9 +14,9 @@ import com.selenium.pageObjects.GooglePage;
  */
 @Listeners({ResultListener.class})
 public class AutomationFramework {
-    public static WebDriver driver;
+    protected static WebDriver driver;
 
-    public  GooglePage setUp(String browser) throws InterruptedException {
+    protected GooglePage setUp(String browser) throws InterruptedException {
         if (browser.equals("Chrome")) {
             System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
             driver = new ChromeDriver();
@@ -32,7 +32,7 @@ public class AutomationFramework {
         return new GooglePage(driver);
     }
 
-    public  GooglePage setUpSelenide(String browser) throws InterruptedException {
+    protected  GooglePage setUpSelenide(String browser) throws InterruptedException {
         if (browser.equals("Chrome")) {
             System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
             driver = new ChromeDriver();
@@ -50,7 +50,7 @@ public class AutomationFramework {
     }
 
 
-    public void closeBrowser(){
+    protected void closeBrowser(){
         driver.quit();
     }
 }

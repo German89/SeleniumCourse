@@ -21,7 +21,7 @@ public class Prueba {
         driver.get("http://www.google.com.ar");
 
         // Localizamos por ID el elemento input y lo guardamos en un Objeto del tipo WebElement
-        WebElement inputBusqueda = driver.findElement(By.id("lst-ib"));
+        WebElement inputBusqueda = driver.findElement(By.name("q"));
 
         //Escribimos el texto Ole en el input
         inputBusqueda.sendKeys("Ole");

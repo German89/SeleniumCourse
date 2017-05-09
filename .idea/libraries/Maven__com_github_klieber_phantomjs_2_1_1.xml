@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.klieber:phantomjs:2.1.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/klieber/phantomjs/2.1.1/phantomjs-2.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/klieber/phantomjs/2.1.1/phantomjs-2.1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/klieber/phantomjs/2.1.1/phantomjs-2.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

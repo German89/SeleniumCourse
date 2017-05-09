@@ -1,6 +1,7 @@
 package com.selenium.pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -10,7 +11,7 @@ public class GooglePage {
     private WebDriver driver;
 
     //Definicion de las estrategias de busqueda
-    private By searchInputLocator = By.id("lst-ib");
+    private By searchInputLocator = By.name("q");
     private By searchButtonLocator = By.cssSelector("[aria-label='Buscar con Google']");
 
 
@@ -25,6 +26,11 @@ public class GooglePage {
 
     public ResultsPage clickSearch(){
         driver.findElement(searchButtonLocator).click();
+        return new ResultsPage(driver);
+    }
+
+    public ResultsPage pressEnter(){
+        driver.findElement(searchInputLocator).sendKeys(Keys.ENTER);
         return new ResultsPage(driver);
     }
 }

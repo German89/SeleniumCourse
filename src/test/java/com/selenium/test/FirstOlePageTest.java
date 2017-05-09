@@ -1,6 +1,7 @@
 package com.selenium.test;
 
 import com.selenium.automationFramework.AutomationFramework;
+import com.selenium.automationFramework.ResultListener;
 import com.selenium.pageObjects.GooglePage;
 import com.selenium.pageObjects.OlePage;
 import com.selenium.pageObjects.ResultsPage;
@@ -8,7 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.net.MalformedURLException;
 import java.util.List;
 
@@ -19,28 +19,30 @@ public class FirstOlePageTest extends AutomationFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
     private OlePage olePage;
+    private ResultListener resultListener = new ResultListener();
 
     @BeforeTest
     public void setUpTest() throws InterruptedException, MalformedURLException {
         //Abrir el browser y navegar hacia la pagina de google
         googlePage = super.setUp("Chrome");
+        resultListener.getDriver(driver);
     }
 
-    @Test
+    @Test(priority = 1)
     public void verifyFirstResult() {
         //Escribe el texto Ole en el buscador usando el metodo del Page Object
         googlePage.writeTextToSearch("Ole");
 
         //Presionar el boton Buscar
-        resultsPage =  googlePage.clickSearch();
+        resultsPage =  googlePage.pressEnter();
 
         //Verificar el resultado de la primera busqueda.
-        Assert.assertEquals("Ole | Diario Deportivo", resultsPage.getTextOfFirstResult());
+        Assert.assertEquals(resultsPage.getTextOfFirstResult(), "Ole | Diario Deportiv");
     }
 
     @Test(dependsOnMethods = "verifyFirstResult")
     public void verifyOleMenu(){
-        //Click en el primerResultado e instanciar el Page Object olePage
+        //Click en el primer Resultado e instanciar el Page Object olePage
         olePage = resultsPage.clickOlePage();
 
         //Obtener la lista de elementos del menu y verificar el contenido

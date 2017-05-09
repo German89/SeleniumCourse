@@ -12,13 +12,12 @@ import java.util.List;
 public class ResultsPage {
     private WebDriver driver;
 
-
-    @FindBy(how = How.CSS, using = ".rc a")
+    @FindBy(how = How.CSS, using = "h3 a")
     private WebElement firstResult;
 
     @FindBys({
-            @FindBy (how = How.ID, using = "id"),
-            @FindBy (how = How.CLASS_NAME, using = "class")
+            @FindBy (how = How.CLASS_NAME, using = "class"),
+            @FindBy (how = How.CSS, using = "[visible = 'true']")
     })
     private List<WebElement> listOfElements;
 
@@ -41,7 +40,4 @@ public class ResultsPage {
         firstResult.click();
         return new OlePage(driver);
     }
-
-
-
 }

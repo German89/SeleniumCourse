@@ -1,5 +1,6 @@
 package com.selenium.pageObjects;
 
+import com.selenium.automationFramework.WaitHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -22,10 +23,12 @@ public class GooglePage {
 
     public void writeTextToSearch(String text){
         driver.findElement(searchInputLocator).sendKeys(text);
+        WaitHelper.sleep(1);
     }
 
     public ResultsPage clickSearch(){
         driver.findElement(searchButtonLocator).click();
+        WaitHelper.sleep(3);
         return new ResultsPage(driver);
     }
 

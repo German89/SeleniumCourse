@@ -8,6 +8,7 @@ import com.selenium.pageObjects.ResultsPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.util.List;
@@ -19,25 +20,24 @@ public class FirstOlePageTest extends AutomationFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
     private OlePage olePage;
-    private ResultListener resultListener = new ResultListener();
+
 
     @BeforeTest
     public void setUpTest() throws InterruptedException, MalformedURLException {
         //Abrir el browser y navegar hacia la pagina de google
-        googlePage = super.setUp("Chrome");
-        resultListener.getDriver(driver);
+        googlePage = super.setUp("PhantomJS");
     }
 
     @Test(priority = 1)
-    public void verifyFirstResult() {
+    public void verifyFirstResult(String textToSearch, String textTosearch1, String textTosearch2) {
         //Escribe el texto Ole en el buscador usando el metodo del Page Object
-        googlePage.writeTextToSearch("Ole");
+        googlePage.writeTextToSearch(textToSearch);
 
         //Presionar el boton Buscar
         resultsPage =  googlePage.pressEnter();
 
         //Verificar el resultado de la primera busqueda.
-        Assert.assertEquals(resultsPage.getTextOfFirstResult(), "Ole | Diario Deportiv");
+        Assert.assertEquals(resultsPage.getTextOfFirstResult(), "Ole | Diario Deportivo");
     }
 
     @Test(dependsOnMethods = "verifyFirstResult")

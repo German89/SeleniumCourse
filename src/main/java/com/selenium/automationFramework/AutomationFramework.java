@@ -17,7 +17,7 @@ import com.selenium.pageObjects.GooglePage;
  */
 @Listeners({ResultListener.class})
 public class AutomationFramework {
-    protected static WebDriver driver;
+    protected WebDriver driver;
 
     protected GooglePage setUp(String browser) throws InterruptedException {
         if (browser.equals("Chrome")) {

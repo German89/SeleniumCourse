@@ -19,4 +19,12 @@ public class WaitHelper {
     public static void setImplicitWait(WebDriver driver, int seconds){
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
+
+    public static void sleep(int seconds){
+        try {
+            Thread.sleep(seconds*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

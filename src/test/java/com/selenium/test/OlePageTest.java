@@ -36,7 +36,7 @@ public class OlePageTest extends AutomationFramework {
         Assert.assertEquals("Ole | Diario Deportivo", resultsPage.getTextOfFirstResult());
     }
 
-    @Test(dependsOnMethods = {"verifyFirstResult"})
+    @Test
     public void verifyOleMenu(){
         olePage = resultsPage.clickOlePage();
         List<String> menuElements = olePage.getListOfHeaderMenuOptions();

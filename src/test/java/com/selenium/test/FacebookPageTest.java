@@ -2,6 +2,7 @@ package com.selenium.test;
 
 import com.selenium.automationFramework.AutomationFramework;
 import com.selenium.automationFramework.ResultListener;
+import com.selenium.dataProvider.SearchTextProvider;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import com.selenium.pageObjects.GooglePage;
@@ -24,10 +25,10 @@ public class FacebookPageTest extends AutomationFramework{
     }
 
     @Test
-    public void verifyFirstResult() {
+    public void verifyFirstResultFacebook() {
         googlePage.writeTextToSearch("Facebook");
         resultsPage =  googlePage.clickSearch();
-        Assert.assertEquals("Facebook - Inicia sesión o regístrate", resultsPage.getTextOfFirstResult());
+        Assert.assertEquals(resultsPage.getTextOfFirstResult(), "Facebook - Inicia sesión o regístrate" );
     }
 
     @AfterTest

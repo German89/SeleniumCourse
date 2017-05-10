@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -28,5 +29,10 @@ public class Prueba {
 
         //Localizamos el boton de buscar usando un selector css y le hacemos click
         driver.findElement(By.cssSelector("[aria-label='Buscar con Google']")).click();
+    }
+
+    @DataProvider(name = "textToSearch")
+    public Object[][] textToSearch(){
+        return new Object[][]{{"Ole1", "Ole2"}};
     }
 }

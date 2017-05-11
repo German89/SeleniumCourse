@@ -25,20 +25,20 @@ public class OlePageTest extends AutomationFramework {
 
     @BeforeTest
     @Parameters({"browser"})
-    public void setUpTest(@Optional("Chrome") String browser) throws InterruptedException, MalformedURLException {
+    public void setUpTest(@Optional("PhantomJS") String browser) throws InterruptedException, MalformedURLException {
         googlePage = super.setUp(browser);
         resultListener.getDriver(driver);
     }
 
-    @Test(dataProviderClass = SearchTextProvider.class , dataProvider = "searchTextProvider", priority = 1)
-    public void verifyFirstResult(String textToSearch) {
+    @Test
+    public void verifyFirstResult() {
         googlePage.clearText();
-        googlePage.writeTextToSearch(textToSearch);
-        resultsPage =  googlePage.clickSearch();
-        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains(textToSearch), "El primer resultado no contiene la palabra : " + textToSearch);
+        googlePage.writeTextToSearch("Ole");
+        resultsPage =  googlePage.pressEnter();
+        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains("Ole"), "El primer resultado no contiene la palabra : " + "Ole");
     }
 
-    @Test(dependsOnMethods = "verifyFirstResult")
+    @Test
     public void verifyOleMenu(){
         olePage = resultsPage.clickOlePage();
         List<String> menuElements = olePage.getListOfHeaderMenuOptions();

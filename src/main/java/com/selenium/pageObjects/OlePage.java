@@ -42,18 +42,20 @@ public class OlePage {
        return  $$(headerMenuLocator).texts();
     }
 
-    public List<WebElement> getClubListSelenium(){
-        List<WebElement> listOfClubs = driver.findElements(clubListLocator);
-        for (WebElement club : listOfClubs) {
-            if (!club.isDisplayed()) {
-                listOfClubs.remove(club);
+
+
+    public void clickOnMenuOptionSelenium(String optionToClick){
+        List<WebElement> listOfOptions = driver.findElements(headerMenuLocator);
+        for (WebElement option : listOfOptions) {
+            if (option.getText().equals(optionToClick)) {
+                option.click();
+                break;
             }
         }
-        return listOfClubs;
     }
 
-    public List<SelenideElement> getClubListSelenide(){
-        return $$(clubListLocator).filter(Condition.visible);
+    public void clickOnMenuOptionSelenide(String optionToClick){
+         $$(clubListLocator).filter(Condition.text(optionToClick)).get(0).click();
     }
 
 }

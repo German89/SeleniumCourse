@@ -3,6 +3,7 @@ package com.selenium.test;
 import com.selenium.automationFramework.AutomationFramework;
 import com.selenium.automationFramework.AutomationRemoteFramework;
 import com.selenium.automationFramework.ResultListener;
+import com.selenium.dataProvider.SearchTextProvider;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import com.selenium.pageObjects.GooglePage;
@@ -29,14 +30,15 @@ public class OlePageTest extends AutomationFramework {
         resultListener.getDriver(driver);
     }
 
-    @Test
-    public void verifyFirstResult() {
-        googlePage.writeTextToSearch("Ole");
+    @Test(dataProviderClass = SearchTextProvider.class , dataProvider = "searchTextProvider", priority = 1)
+    public void verifyFirstResult(String textToSearch) {
+        googlePage.clearText();
+        googlePage.writeTextToSearch(textToSearch);
         resultsPage =  googlePage.clickSearch();
-        Assert.assertEquals("Ole | Diario Deportivo", resultsPage.getTextOfFirstResult());
+        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains(textToSearch), "El primer resultado no contiene la palabra : " + textToSearch);
     }
 
-    @Test
+    @Test(dependsOnMethods = "verifyFirstResult")
     public void verifyOleMenu(){
         olePage = resultsPage.clickOlePage();
         List<String> menuElements = olePage.getListOfHeaderMenuOptions();

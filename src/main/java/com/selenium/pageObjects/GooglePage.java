@@ -21,6 +21,11 @@ public class GooglePage {
         this.driver = driver;
     }
 
+    public void clearText(){
+        driver.findElement(searchInputLocator).clear();
+        WaitHelper.sleep(1);
+    }
+
     public void writeTextToSearch(String text){
         driver.findElement(searchInputLocator).sendKeys(text);
         WaitHelper.sleep(1);

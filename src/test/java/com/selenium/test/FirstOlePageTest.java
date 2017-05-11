@@ -29,9 +29,9 @@ public class FirstOlePageTest extends AutomationFramework {
     }
 
     @Test(priority = 1)
-    public void verifyFirstResult(String textToSearch, String textTosearch1, String textTosearch2) {
+    public void verifyFirstResult() {
         //Escribe el texto Ole en el buscador usando el metodo del Page Object
-        googlePage.writeTextToSearch(textToSearch);
+        googlePage.writeTextToSearch("Ole");
 
         //Presionar el boton Buscar
         resultsPage =  googlePage.pressEnter();

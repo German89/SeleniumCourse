@@ -1,5 +1,7 @@
 package com.selenium.test;
 
+import com.codeborne.selenide.testng.TextReport;
+import com.codeborne.selenide.testng.annotations.Report;
 import com.selenium.automationFramework.AutomationFramework;
 import com.selenium.automationFramework.AutomationRemoteFramework;
 import com.selenium.automationFramework.ResultListener;
@@ -17,6 +19,7 @@ import java.util.List;
  * Created by German on 19/4/2017.
  */
 
+
 public class OlePageTest extends AutomationFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
@@ -25,15 +28,15 @@ public class OlePageTest extends AutomationFramework {
 
     @BeforeTest
     @Parameters({"browser"})
-    public void setUpTest(@Optional("PhantomJS") String browser) throws InterruptedException, MalformedURLException {
-        googlePage = super.setUp(browser);
+    public void setUpTest(@Optional("Chrome") String browser) throws InterruptedException, MalformedURLException {
+        googlePage = super.setUpSelenide(browser);
         resultListener.getDriver(driver);
     }
 
-    @Test
-    public void verifyFirstResult() {
+    @Test(dataProviderClass = SearchTextProvider.class, dataProvider = "searchTextProvider")
+    public void verifyFirstResult(String text) {
         googlePage.clearText();
-        googlePage.writeTextToSearch("Ole");
+        googlePage.writeTextToSearch(text);
         resultsPage =  googlePage.pressEnter();
         Assert.assertTrue(resultsPage.getTextOfFirstResult().contains("Ole"), "El primer resultado no contiene la palabra : " + "Ole");
     }

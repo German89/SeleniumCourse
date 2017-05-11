@@ -1,6 +1,8 @@
 package com.selenium.automationFramework;
 
 import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.testng.TextReport;
+import com.codeborne.selenide.testng.annotations.Report;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +18,7 @@ import com.selenium.pageObjects.GooglePage;
  * Created by German on 20/4/2017.
  */
 @Listeners({ResultListener.class})
+@Report
 public class AutomationFramework {
     protected WebDriver driver;
 

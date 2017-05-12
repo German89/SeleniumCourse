@@ -40,7 +40,7 @@ public class AutomationFramework {
 
         driver.manage().window().maximize();
         driver.get("https://www.google.com.ar");
-        WaitHelper.setImplicitWait(driver, 20);
+        WaitHelper.setImplicitWait(driver, 5);
         return new GooglePage(driver);
     }
 

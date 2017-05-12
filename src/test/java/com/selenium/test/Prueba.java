@@ -1,9 +1,11 @@
 package com.selenium.test;
 
+import com.selenium.automationFramework.WaitHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -22,17 +24,16 @@ public class Prueba {
         driver.get("http://www.google.com.ar");
 
         // Localizamos por ID el elemento input y lo guardamos en un Objeto del tipo WebElement
-        WebElement inputBusqueda = driver.findElement(By.name("q"));
+        WebElement input = driver.findElement(By.name("q"));
 
         //Escribimos el texto Ole en el input
-        inputBusqueda.sendKeys("Ole");
+        input.sendKeys("Ole");
 
         //Localizamos el boton de buscar usando un selector css y le hacemos click
         driver.findElement(By.cssSelector("[aria-label='Buscar con Google']")).click();
-    }
 
-    @DataProvider(name = "textToSearch")
-    public Object[][] textToSearch(){
-        return new Object[][]{{"Ole1", "Ole2"}};
+        WaitHelper.sleep(4);
+
+        Assert.assertEquals(driver.findElement(By.cssSelector("h3 a")).getText(), "Ole | Diario Deportivo");
     }
 }

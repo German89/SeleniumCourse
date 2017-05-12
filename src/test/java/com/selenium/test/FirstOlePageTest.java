@@ -25,10 +25,10 @@ public class FirstOlePageTest extends AutomationFramework {
     @BeforeTest
     public void setUpTest() throws InterruptedException, MalformedURLException {
         //Abrir el browser y navegar hacia la pagina de google
-        googlePage = super.setUp("PhantomJS");
+        googlePage = super.setUp("Firefox");
     }
 
-    @Test(priority = 1)
+    @Test
     public void verifyFirstResult() {
         //Escribe el texto Ole en el buscador usando el metodo del Page Object
         googlePage.writeTextToSearch("Ole");

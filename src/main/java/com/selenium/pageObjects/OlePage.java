@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.$$;
 public class OlePage {
     private WebDriver driver;
 
-    @FindBy(how = How.CSS, using = ".header-top .site-menu li")
+    @FindBy(css = ".header-top .site-menu li")
     private List<WebElement> headerMenuOptions;
 
     private By headerMenuLocator = By.cssSelector(".header-top .site-menu li");

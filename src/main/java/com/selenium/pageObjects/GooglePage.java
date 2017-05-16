@@ -18,7 +18,6 @@ public class GooglePage {
     private By searchButtonLocator = By.cssSelector("[aria-label='Buscar con Google']");
 
 
-
     public GooglePage(WebDriver driver) {
         this.driver = driver;
     }

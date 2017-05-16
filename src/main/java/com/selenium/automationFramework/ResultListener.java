@@ -34,24 +34,12 @@ public class ResultListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult result){
-
-        String fileName = "C:\\screenshotFailedTest\\" + result.getName() + ".jpg";
-        Logger.getLogger(Augmenter.class.getName()).setLevel(Level.OFF); //Disable the log of the Augmenter class to avoid warnings while taking screenshots
-        final Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver);
-        final BufferedImage image = screenshot.getImage();
-        try {
-            ImageIO.write(image, "JPG", new File(fileName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        /*
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File("C:\\screenshotFailedTest\\" + result.getName()+ ".png"));
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 }
 
@@ -65,5 +53,13 @@ public class ResultListener extends TestListenerAdapter {
 
 
 /*
-
+ String fileName = "C:\\screenshotFailedTest\\" + result.getName() + ".jpg";
+        Logger.getLogger(Augmenter.class.getName()).setLevel(Level.OFF); //Disable the log of the Augmenter class to avoid warnings while taking screenshots
+        final Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver);
+        final BufferedImage image = screenshot.getImage();
+        try {
+            ImageIO.write(image, "JPG", new File(fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
  */

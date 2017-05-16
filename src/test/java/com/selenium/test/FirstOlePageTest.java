@@ -20,14 +20,12 @@ public class FirstOlePageTest extends AutomationFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
     private OlePage olePage;
-    private ResultListener resultListener =  new ResultListener();
 
 
     @BeforeTest
     public void setUpTest() throws InterruptedException, MalformedURLException {
         //Abrir el browser y navegar hacia la pagina de google
-        googlePage = super.setUp("Firefox");
-        resultListener.getDriver(driver);
+        googlePage = super.setUp("Chrome");
     }
 
     @Test

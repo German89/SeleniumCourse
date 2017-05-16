@@ -22,7 +22,7 @@ public class FacebookPageTest extends AutomationFramework{
         resultListener.getDriver(driver);
     }
 
-    @FirstTest
+    @Test
     public void verifyFirstResultFacebook() {
         googlePage.writeTextToSearch("Facebook");
         resultsPage =  googlePage.clickSearch();

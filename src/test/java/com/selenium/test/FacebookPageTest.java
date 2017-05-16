@@ -2,11 +2,9 @@ package com.selenium.test;
 
 import com.selenium.automationFramework.AutomationFramework;
 import com.selenium.automationFramework.ResultListener;
-import com.selenium.dataProvider.SearchTextProvider;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import com.selenium.pageObjects.GooglePage;
-import com.selenium.pageObjects.OlePage;
 import com.selenium.pageObjects.ResultsPage;
 
 /**
@@ -24,7 +22,7 @@ public class FacebookPageTest extends AutomationFramework{
         resultListener.getDriver(driver);
     }
 
-    @Test
+    @FirstTest
     public void verifyFirstResultFacebook() {
         googlePage.writeTextToSearch("Facebook");
         resultsPage =  googlePage.clickSearch();

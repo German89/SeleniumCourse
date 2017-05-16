@@ -1,9 +1,6 @@
 package com.selenium.test;
 
-import com.codeborne.selenide.testng.TextReport;
-import com.codeborne.selenide.testng.annotations.Report;
 import com.selenium.automationFramework.AutomationFramework;
-import com.selenium.automationFramework.AutomationRemoteFramework;
 import com.selenium.automationFramework.ResultListener;
 import com.selenium.dataProvider.SearchTextProvider;
 import org.testng.Assert;
@@ -33,7 +30,7 @@ public class OlePageTest extends AutomationFramework {
         resultListener.getDriver(driver);
     }
 
-    @Test(dataProviderClass = SearchTextProvider.class, dataProvider = "searchTextProvider")
+    @FirstTest(dataProviderClass = SearchTextProvider.class, dataProvider = "searchTextProvider")
     public void verifyFirstResult(String text) {
         googlePage.clearText();
         googlePage.writeTextToSearch(text);
@@ -41,7 +38,7 @@ public class OlePageTest extends AutomationFramework {
         Assert.assertTrue(resultsPage.getTextOfFirstResult().contains("Ole"), "El primer resultado no contiene la palabra : " + "Ole");
     }
 
-    @Test
+    @FirstTest
     public void verifyOleMenu(){
         olePage = resultsPage.clickOlePage();
         List<String> menuElements = olePage.getListOfHeaderMenuOptions();

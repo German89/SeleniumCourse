@@ -3,6 +3,7 @@ package com.selenium.pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class ResultsPage {
 
     public ResultsPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
     }
 
     public String getTextOfFirstResult(){

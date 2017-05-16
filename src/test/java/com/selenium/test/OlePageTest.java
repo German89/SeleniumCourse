@@ -30,7 +30,7 @@ public class OlePageTest extends AutomationFramework {
         resultListener.getDriver(driver);
     }
 
-    @FirstTest(dataProviderClass = SearchTextProvider.class, dataProvider = "searchTextProvider")
+    @Test(dataProviderClass = SearchTextProvider.class, dataProvider = "searchTextProvider")
     public void verifyFirstResult(String text) {
         googlePage.clearText();
         googlePage.writeTextToSearch(text);
@@ -38,7 +38,7 @@ public class OlePageTest extends AutomationFramework {
         Assert.assertTrue(resultsPage.getTextOfFirstResult().contains("Ole"), "El primer resultado no contiene la palabra : " + "Ole");
     }
 
-    @FirstTest
+    @Test
     public void verifyOleMenu(){
         olePage = resultsPage.clickOlePage();
         List<String> menuElements = olePage.getListOfHeaderMenuOptions();

@@ -18,11 +18,12 @@ public class GooglePage {
     private By searchButtonLocator = By.cssSelector("[aria-label='Buscar con Google']");
 
 
-    //Utilizamos los Locator para interactuar con los elementos.
+
     public GooglePage(WebDriver driver) {
         this.driver = driver;
     }
 
+    //Utilizamos los Locator para interactuar con los elementos.
     public void clearText(){
         driver.findElement(searchInputLocator).clear();
         WaitHelper.sleep(1);
@@ -35,7 +36,6 @@ public class GooglePage {
 
     public ResultsPage clickSearch(){
         driver.findElement(searchButtonLocator).click();
-        WaitHelper.sleep(3);
         return new ResultsPage(driver);
     }
 

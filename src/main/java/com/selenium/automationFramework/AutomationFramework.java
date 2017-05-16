@@ -18,7 +18,6 @@ import com.selenium.pageObjects.GooglePage;
  * Created by German on 20/4/2017.
  */
 @Listeners({ResultListener.class})
-@Report
 public class AutomationFramework {
     protected WebDriver driver;
 

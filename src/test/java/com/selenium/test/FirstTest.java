@@ -32,8 +32,6 @@ public class FirstTest {
         //Localizamos el boton de buscar usando un selector css y le hacemos click
         driver.findElement(By.cssSelector("[aria-label='Buscar con Google']")).click();
 
-        WaitHelper.sleep(4);
-
         Assert.assertEquals(driver.findElement(By.cssSelector("h3 a")).getText(), "Ole | Diario Deportivo");
     }
 }

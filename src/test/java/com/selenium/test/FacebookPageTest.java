@@ -16,8 +16,8 @@ public class FacebookPageTest extends AutomationFramework{
     private ResultListener resultListener = new ResultListener();
 
     @BeforeTest
-    @Parameters({"browser"})
-    public void setUpBrowser(@Optional("Chrome") String browser) throws InterruptedException {
+    @Parameters("browser")
+    public void setUpBrowser( String browser) throws InterruptedException {
         googlePage = super.setUp(browser);
         resultListener.getDriver(driver);
     }

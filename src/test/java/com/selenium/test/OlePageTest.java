@@ -30,11 +30,11 @@ public class OlePageTest extends AutomationFramework {
     }
 
     @Test
-    public void verifyFirstResult(String text) {
+    public void verifyFirstResult() {
         googlePage.clearText();
-        googlePage.writeTextToSearch(text);
+        googlePage.writeTextToSearch("Ole");
         resultsPage =  googlePage.pressEnter();
-        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains(text), "El primer resultado no contiene la palabra : " + text);
+        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains("Ole"), "El primer resultado no contiene la palabra : Ole" );
     }
 
     @Test

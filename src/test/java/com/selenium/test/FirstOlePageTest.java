@@ -2,20 +2,20 @@ package com.selenium.test;
 
 import com.selenium.automationFramework.AutomationFramework;
 import com.selenium.automationFramework.ResultListener;
+import com.selenium.dataProvider.SearchTextProvider;
 import com.selenium.pageObjects.GooglePage;
 import com.selenium.pageObjects.OlePage;
 import com.selenium.pageObjects.ResultsPage;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import java.net.MalformedURLException;
 import java.util.List;
 
 /**
  * Created by AGUIRREG on 08/05/2017.
  */
+
 public class FirstOlePageTest extends AutomationFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
@@ -37,10 +37,10 @@ public class FirstOlePageTest extends AutomationFramework {
         resultsPage =  googlePage.pressEnter();
 
         //Verificar el resultado de la primera busqueda.
-        Assert.assertEquals(resultsPage.getTextOfFirstResult(), "Ole | Diario Deportivo");
+        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains("Ole"));
     }
 
-    @Test(dependsOnMethods = "verifyFirstResult")
+    @Test(dependsOnMethods = "verifyFirstResult", priority = 2)
     public void verifyOleMenu(){
         //Click en el primer Resultado e instanciar el Page Object olePage
         olePage = resultsPage.clickOlePage();
@@ -59,6 +59,12 @@ public class FirstOlePageTest extends AutomationFramework {
         Assert.assertTrue(menuElements.contains("DIOSAS"), " La opcion DIOSAS, no aparece en el menu");
         Assert.assertTrue(menuElements.contains("MAS"), " La opcion MAS, no aparece en el menu");
         Assert.assertEquals(menuElements.size(), 11);
+    }
+
+    @Test(dependsOnMethods = "verifyFirstResult", priority = 1)
+    public void verifyRelatedSearches(){
+        List<String> listOfRelatedSearches = resultsPage.getRelatedSearchList();
+        Assert.assertTrue(listOfRelatedSearches.contains("Ole River"), "Ole River no se encuentra en la lista");
     }
 
     @AfterTest

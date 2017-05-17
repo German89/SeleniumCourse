@@ -32,7 +32,7 @@ public class ResultsPage {
 
     public ResultsPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
     }
 
     public String getTextOfFirstResult(){

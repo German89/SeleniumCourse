@@ -24,18 +24,17 @@ public class OlePageTest extends AutomationFramework {
     private ResultListener resultListener = new ResultListener();
 
     @BeforeTest
-    @Parameters({"browser"})
-    public void setUpTest(@Optional("Chrome") String browser) throws InterruptedException, MalformedURLException {
-        googlePage = super.setUpSelenide(browser);
+    public void setUpTest() throws InterruptedException, MalformedURLException {
+        googlePage = super.setUpSelenide("Chrome");
         resultListener.getDriver(driver);
     }
 
-    @Test(dataProviderClass = SearchTextProvider.class, dataProvider = "searchTextProvider")
+    @Test
     public void verifyFirstResult(String text) {
         googlePage.clearText();
         googlePage.writeTextToSearch(text);
         resultsPage =  googlePage.pressEnter();
-        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains("Ole"), "El primer resultado no contiene la palabra : " + "Ole");
+        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains(text), "El primer resultado no contiene la palabra : " + text);
     }
 
     @Test

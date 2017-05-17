@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,8 +15,8 @@ import java.util.List;
 public class ResultsPage {
     private WebDriver driver;
 
-    @FindBy(css = "h3 a")
-    private WebElement firstResult;
+    @FindBy(css = "h3 a") private WebElement firstResult;
+    @FindBy(css = ".card-section p") private List<WebElement> relatedSearches;
 
     @FindBys({
             @FindBy (className = "class"),
@@ -41,5 +42,13 @@ public class ResultsPage {
     public OlePage clickOlePage(){
         firstResult.click();
         return new OlePage(driver);
+    }
+
+    public List<String> getRelatedSearchList(){
+        List<String> relatedSearchesText = new ArrayList<>();
+        for (WebElement element : relatedSearches) {
+            relatedSearchesText.add(element.getText());
+        }
+        return  relatedSearchesText;
     }
 }

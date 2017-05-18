@@ -1,11 +1,15 @@
 package com.selenium.test;
 
+import com.codeborne.selenide.testng.TextReport;
+import com.codeborne.selenide.testng.annotations.Report;
 import com.selenium.automationFramework.AutomationFramework;
 import com.selenium.automationFramework.ResultListener;
+import com.selenium.automationFramework.WaitHelper;
 import com.selenium.dataProvider.SearchTextProvider;
 import com.selenium.pageObjects.GooglePage;
 import com.selenium.pageObjects.OlePage;
 import com.selenium.pageObjects.ResultsPage;
+import org.bouncycastle.util.io.StreamOverflowException;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -20,7 +24,6 @@ public class FirstOlePageTest extends AutomationFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
     private OlePage olePage;
-
 
     @BeforeTest
     public void setUpTest() throws InterruptedException, MalformedURLException {

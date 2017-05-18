@@ -1,6 +1,7 @@
 package com.selenium.pageObjects;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.selenium.automationFramework.WaitHelper;
 import org.openqa.selenium.By;
@@ -9,8 +10,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 /**
  * Created by German on 24/4/2017.
@@ -18,16 +23,13 @@ import static com.codeborne.selenide.Selenide.$$;
 public class OlePage {
     private WebDriver driver;
 
-    @FindBy(css = ".header-top .site-menu li")
-    private List<WebElement> headerMenuOptions;
+    @FindBy(css = ".header-top .site-menu li") private List<WebElement> headerMenuOptions;
+    @FindBy(css = ".club-list li a") List<WebElement> clubList;
 
-    private By headerMenuLocator = By.cssSelector(".header-top .site-menu li");
-    private By clubListLocator = By.cssSelector(".club-list li");
 
     public OlePage(WebDriver driver) {
         this.driver = driver;
-        WaitHelper.waitForPresence(driver, headerMenuLocator, 20);
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 5), this);
     }
 
     public List<String> getListOfHeaderMenuOptions(){
@@ -38,24 +40,22 @@ public class OlePage {
         return textList;
     }
 
-    public List<String> getListOfHeaderMenuOptionsSelenided(){
-       return  $$(headerMenuLocator).texts();
+    public List<String> getListOfHeaderMenuOptionsSelenide(){
+       return  $$(headerMenuOptions).texts();
     }
 
 
-
-    public void clickOnMenuOptionSelenium(String optionToClick){
-        List<WebElement> listOfOptions = driver.findElements(headerMenuLocator);
-        for (WebElement option : listOfOptions) {
-            if (option.getText().equals(optionToClick)) {
-                option.click();
+    public void clickClubSelenium(String optionToClick){
+        for (WebElement club : clubList) {
+            if (club.getAttribute("data-equipo").equals(optionToClick)) {
+                club.click();
                 break;
             }
         }
     }
 
-    public void clickOnMenuOptionSelenide(String optionToClick){
-         $$(clubListLocator).filter(Condition.text(optionToClick)).get(0).click();
+    public void clickClubSelenide(String optionToClick){
+         $$(clubList).filter(Condition.attribute("data-equipo", optionToClick)).get(0).click();
     }
 
 }

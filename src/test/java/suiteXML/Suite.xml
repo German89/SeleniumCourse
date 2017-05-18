@@ -1,7 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="SuiteAll">
-    <test name="Test pages from Goolge chrome">
+
+    <test name="Test pages from Goolge chrome" >
         <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="com.selenium.test.FirstOlePageTest"/>

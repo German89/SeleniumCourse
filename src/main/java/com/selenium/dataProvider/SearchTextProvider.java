@@ -14,7 +14,7 @@ import java.util.List;
 public class SearchTextProvider {
 
     @DataProvider
-    public Object[][] searchTextProvider() throws IOException {
+    public Object[][] searchProvider() throws IOException {
         //Leer el archivo y agregar a una lista de string cada linea del texto
         BufferedReader  reader = new BufferedReader(new FileReader("C:\\Drivers\\textToSearch.txt"));
         String sCurrentLine;

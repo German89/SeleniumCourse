@@ -17,7 +17,6 @@ import com.selenium.pageObjects.GooglePage;
 /**
  * Created by German on 20/4/2017.
  */
-@Listeners(ResultListener.class)
 public class AutomationFramework {
     protected WebDriver driver;
     private ResultListener resultListener = new ResultListener();
@@ -61,6 +60,7 @@ public class AutomationFramework {
         driver.manage().window().maximize();
         driver.get("https://www.google.com.ar");
         WaitHelper.setImplicitWait(driver, 10);
+        resultListener.getDriver(driver);
         return new GooglePage(driver);
     }
 

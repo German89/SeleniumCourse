@@ -25,6 +25,7 @@ public class OlePage {
 
     @FindBy(css = ".header-top .site-menu li") private List<WebElement> headerMenuOptions;
     @FindBy(css = ".club-list li a") List<WebElement> clubList;
+    @FindBy(css = "#fecha-hora-header h2") WebElement clubHeaderTitle;
 
 
     public OlePage(WebDriver driver) {
@@ -58,4 +59,7 @@ public class OlePage {
          $$(clubList).filter(Condition.attribute("data-equipo", optionToClick)).get(0).click();
     }
 
+    public String getClubHeaderTitle(){
+       return  $(clubHeaderTitle).getText();
+    }
 }

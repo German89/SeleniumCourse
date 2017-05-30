@@ -1,12 +1,20 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="SuiteAll">
+<suite name="SuiteAll" parallel="tests" thread-count="1">
+    <parameter name="browser" value="Chrome"/>
 
-    <test name="Test pages from Goolge chrome" >
-        <parameter name="browser" value="Chrome"/>
+    <test name="Test for Facebook" >
+        <parameter name="browser" value="Firefox"/>
         <classes>
-            <class name="com.selenium.test.FirstOlePageTest"/>
             <class name="com.selenium.test.FacebookPageTest"/>
         </classes>
     </test>
+
+    <test name="Test for Ole" >
+        <classes>
+            <class name="com.selenium.test.FirstOlePageTest"/>
+        </classes>
+    </test>
+
+
 </suite>

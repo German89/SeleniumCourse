@@ -15,7 +15,7 @@ public class BitBarTest extends AutomationAndroidFramework {
 
     @BeforeClass
     public void setUp() throws MalformedURLException, InterruptedException {
-        super.setUpHybridApp();
+        super.setUpNativeAPP();
 
     }
     @Test

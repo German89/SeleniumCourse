@@ -3,9 +3,7 @@ package com.selenium.test;
 import com.codeborne.selenide.testng.TextReport;
 import com.codeborne.selenide.testng.annotations.Report;
 import com.selenium.automationFramework.AutomationFramework;
-import com.selenium.automationFramework.ResultListener;
 import com.selenium.automationFramework.WaitHelper;
-import com.selenium.dataProvider.SearchTextProvider;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import com.selenium.pageObjects.GooglePage;
@@ -18,7 +16,8 @@ import java.util.List;
 /**
  * Created by German on 19/4/2017.
  */
-
+@Listeners(TextReport.class)
+@Report
 public class OlePageTest extends AutomationFramework {
     private GooglePage googlePage;
     private ResultsPage resultsPage;
@@ -26,19 +25,18 @@ public class OlePageTest extends AutomationFramework {
 
     @BeforeTest
     public void setUpTest() throws InterruptedException, MalformedURLException {
-        googlePage = super.setUp("Chrome");
+        googlePage = super.setUp("Remote_Chrome");
     }
 
     @Test
     public void verifyFirstResult() {
-        String text = "Ole";
         googlePage.clearText();
-        googlePage.writeTextToSearch(text);
+        googlePage.writeTextToSearch("Ole");
         resultsPage =  googlePage.pressEnter();
-        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains(text), "El primer resultado no contiene la palabra : "+ text + ". Se encontró: " + resultsPage.getTextOfFirstResult());
+        Assert.assertTrue(resultsPage.getTextOfFirstResult().contains("Ole"), "El primer resultado no contiene la palabra : Ole Se encontró: " + resultsPage.getTextOfFirstResult());
     }
 
-    @Test
+    @Test(dependsOnMethods = "verifyFirstResult")
     public void verifyOleMenu(){
         olePage = resultsPage.clickOlePage();
         List<String> menuElements = olePage.getListOfHeaderMenuOptionsSelenide();
@@ -54,8 +52,12 @@ public class OlePageTest extends AutomationFramework {
         Assert.assertTrue(menuElements.contains("DIOSAS"), " La opcion DIOSAS, no aparece en el menu");
         Assert.assertTrue(menuElements.contains("MAS"), " La opcion MAS, no aparece en el menu");
         Assert.assertEquals(menuElements.size(), 11);
+    }
+
+    @Test(dependsOnMethods = "verifyOleMenu")
+    public void VerifyClubInformation(){
         olePage.clickClubSelenide("Arsenal");
-        WaitHelper.sleep(5);
+        Assert.assertEquals(olePage.getClubHeaderTitle(), "Arsenal");
     }
 
     @AfterTest

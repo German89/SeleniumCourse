@@ -9,6 +9,8 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.codeborne.selenide.Selenide.$;
+
 /**
  * Created by German on 21/4/2017.
  */
@@ -40,7 +42,7 @@ public class ResultsPage {
     }
 
     public OlePage clickOlePage(){
-        firstResult.click();
+        $(firstResult).click();
         return new OlePage(driver);
     }
 
@@ -51,4 +53,6 @@ public class ResultsPage {
         }
         return  relatedSearchesText;
     }
+
+
 }

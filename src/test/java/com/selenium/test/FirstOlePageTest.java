@@ -11,6 +11,7 @@ import com.selenium.pageObjects.OlePage;
 import com.selenium.pageObjects.ResultsPage;
 import org.bouncycastle.util.io.StreamOverflowException;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
@@ -25,10 +26,11 @@ public class FirstOlePageTest extends AutomationFramework {
     private ResultsPage resultsPage;
     private OlePage olePage;
 
-    @BeforeTest
-    public void setUpTest() throws InterruptedException, MalformedURLException {
+    @BeforeClass
+    @Parameters("browser")
+    public void setUpTest(@Optional("Chrome") String browser) throws InterruptedException, MalformedURLException {
         //Abrir el browser y navegar hacia la pagina de google
-        googlePage = super.setUp("Chrome");
+        googlePage = super.setUp(browser);
     }
 
     @Test
@@ -70,8 +72,8 @@ public class FirstOlePageTest extends AutomationFramework {
         Assert.assertTrue(listOfRelatedSearches.contains("Ole River"), "Ole River no se encuentra en la lista");
     }
 
-    @AfterTest
-    public void closeBrowser(){
+    @AfterTest(alwaysRun = true)
+    public void closeBrowser(ITestResult result){
         super.closeBrowser();
     }
 }
